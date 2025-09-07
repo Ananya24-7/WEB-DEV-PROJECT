@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeOS - Personal AI-Driven Digital Operating System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="light-theme">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <div class="logo-text">
+                        <h1>LifeOS</h1>
+                        <p>Personal AI Assistant</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="tasks">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                </a>
+                <a href="#" class="nav-item" data-section="calendar">
+                    <i class="fas fa-calendar"></i>
+                    <span>Calendar</span>
+                </a>
+                <a href="#" class="nav-item" data-section="knowledge">
+                    <i class="fas fa-book"></i>
+                    <span>Knowledge Hub</span>
+                </a>
+                <a href="#" class="nav-item" data-section="community">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </a>
+                <a href="#" class="nav-item" data-section="analytics">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="settings-btn">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </button>
+
+                <div class="theme-toggle">
+                    <span>Theme</span>
+                    <button class="theme-switch" id="themeToggle">
+                        <i class="fas fa-sun theme-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="greeting">
+                        <h2 id="greetingText">Good Morning, Ananya</h2>
+                        <p>Let's make today productive</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="ai-status">
+                        <div class="status-indicator"></div>
+                        <span>AI Active</span>
+                    </div>
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <div class="user-avatar">
+                        <span>A</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content" id="dashboardContent">
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="action-btn primary" id="newTaskBtn">
+                        <i class="fas fa-plus"></i>
+                        New Task
+                    </button>
+                    <button class="action-btn secondary" id="askAiBtn">
+                        <i class="fas fa-comment"></i>
+                        Ask AI
+                    </button>
+                    <button class="action-btn outline" id="addModuleBtn">
+                        <i class="fas fa-puzzle-piece"></i>
+                        Add Module
+                    </button>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Main Content Area -->
+                    <div class="main-area">
+                        <!-- Task Manager -->
+                        <div class="module-card" id="taskManager">
+                            <div class="module-header">
+                                <div class="module-title">
+                                    <i class="fas fa-tasks"></i>
+                                    <h3>Smart Task Manager</h3>
+                                </div>
+                                <div class="module-actions">
+                                    <span class="badge outline">AI Prioritized</span>
+                                    <button class="icon-btn" id="prioritizeTasks">
+                                        <i class="fas fa-bolt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="module-content">
+                                <div id="taskList" class="task-list">
+                                    <!-- Tasks will be loaded here -->
+                                </div>
+                                <button class="add-task-btn" id="addTaskBtn">
+                                    <i class="fas fa-plus"></i>
+                                    Add new task
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Knowledge Hub -->
+                        <div class="module-card" id="knowledgeHub">
+                            <div class="module-header">
+                                <div class="module-title">
+                                    <i class="fas fa-book"></i>
+                                    <h3>Knowledge Hub</h3>
+                                </div>
+                                <button class="action-btn primary" id="uploadDocBtn">
+                                    <i class="fas fa-upload"></i>
+                                    Upload Document
+                                </button>
+                            </div>
+                            <div class="module-content">
+                                <div id="notesList" class="notes-grid">
+                                    <!-- Notes will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Sidebar -->
+                    <div class="right-sidebar">
+                        <!-- AI Chat -->
+                        <div class="module-card" id="aiChat">
+                            <div class="module-header">
+                                <div class="module-title">
+                                    <i class="fas fa-robot"></i>
+                                    <h3>AI Assistant</h3>
+                                </div>
+                                <button class="icon-btn" id="toggleChat">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                            <div class="module-content">
+                                <div class="chat-messages" id="chatMessages">
+                                    <!-- Chat messages will be loaded here -->
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" id="chatInput" placeholder="Ask your AI companion...">
+                                    <button id="sendMessage">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar -->
+                        <div class="module-card" id="calendar">
+                            <div class="module-header">
+                                <div class="module-title">
+                                    <i class="fas fa-calendar"></i>
+                                    <h3>Smart Calendar</h3>
+                                </div>
+                                <button class="link-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    View All
+                                </button>
+                            </div>
+                            <div class="module-content">
+                                <div id="eventsList" class="events-list">
+                                    <!-- Events will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wellness Tracker -->
+                        <div class="module-card" id="wellnessTracker">
+                            <div class="module-header">
+                                <div class="module-title">
+                                    <i class="fas fa-heart"></i>
+                                    <h3>Wellness Tracker</h3>
+                                </div>
+                                <button class="link-btn" id="logMoodBtn">
+                                    <i class="fas fa-plus"></i>
+                                    Log Mood
+                                </button>
+                            </div>
+                            <div class="module-content">
+                                <div class="wellness-stats">
+                                    <div class="stat">
+                                        <div class="stat-value" id="focusScore">75%</div>
+                                        <div class="stat-label">Focus Score</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-value" id="wellnessEmoji">😊</div>
+                                        <div class="stat-label">Wellness</div>
+                                    </div>
+                                    <div class="stat">
+                                        <div class="stat-value" id="taskProgress">0/0</div>
+                                        <div class="stat-label">Tasks Done</div>
+                                    </div>
+                                </div>
+                                <div class="mood-logger hidden" id="moodLogger">
+                                    <!-- Mood logging interface -->
+                                </div>
+                                <div class="ai-insight">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p id="insightText">Welcome to LifeOS! Start by creating your first task.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Notes -->
+                        <div class="module-card" id="quickNotes">
+                            <div class="module-header">
+                                <div class="module-title">
+                                    <i class="fas fa-sticky-note"></i>
+                                    <h3>Smart Notes</h3>
+                                </div>
+                                <button class="link-btn" id="newNoteBtn">
+                                    <i class="fas fa-plus"></i>
+                                    New Note
+                                </button>
+                            </div>
+                            <div class="module-content">
+                                <div id="quickNotesList" class="quick-notes-list">
+                                    <!-- Quick notes will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating AI Chat Button -->
+    <button class="floating-ai-btn" id="floatingAiBtn">
+        <i class="fas fa-comment ai-pulse"></i>
+    </button>
+
+    <!-- Task Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-check-circle"></i> Create New Task</h3>
+                <button class="close-btn" id="closeTaskModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title</label>
+                    <input type="text" id="taskTitle" placeholder="What needs to be done?" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description (optional)</label>
+                    <textarea id="taskDescription" placeholder="Add more details about this task..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority">
+                        <option value="low">🟢 Low</option>
+                        <option value="medium" selected>🟡 Medium</option>
+                        <option value="high">🔴 High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Due Date (optional)</label>
+                    <input type="datetime-local" id="taskDueDate">
+                </div>
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="aiOptimize" checked>
+                    <label for="aiOptimize">Let AI optimize scheduling</label>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="action-btn primary">
+                        <i class="fas fa-check-circle"></i>
+                        Create Task
+                    </button>
+                    <button type="button" class="action-btn outline" id="cancelTask">
+                        <i class="fas fa-times"></i>
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
